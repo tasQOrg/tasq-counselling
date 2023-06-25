@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 
-type Props = { data: any };
+// type Props = { data: any };
 
-function Form({ data: any }: Props) {
-  return <div>Form</div>;
-}
+// function Form({ data: any }: Props) {
+//   return <div>Form</div>;
+// }
 
-export default Form;
+// export default Form;
