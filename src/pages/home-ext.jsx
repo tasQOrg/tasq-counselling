@@ -3,8 +3,11 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 import slidecc from "../utils/slides_cc";
 
+import { Modal } from "./modal/modal";
+
 export default function HomeExt(props) {
   const [navBtnIsOpen, setNavBtnIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleNavBtn = () => {
     console.log("clicked");
@@ -34,7 +37,9 @@ export default function HomeExt(props) {
   return (
     <>
       <main className="overflow-x-hidden antialiased">
-        <header className="relative z-50 w-full h-24">
+        <Modal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+
+        <header className="relative z-40 w-full h-24">
           <div className="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
             <a
               href="/"
@@ -102,6 +107,7 @@ export default function HomeExt(props) {
               <a
                 href="#_"
                 className="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-indigo-700 sm:w-full lg:shadow-none hover:shadow-xl"
+                onClick={() => setModalIsOpen(!modalIsOpen)}
               >
                 Get a Callback
               </a>
@@ -214,6 +220,7 @@ export default function HomeExt(props) {
               <a
                 href="#_"
                 className="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0"
+                onClick={() => setModalIsOpen(!modalIsOpen)}
               >
                 Register for a Call
               </a>
@@ -294,7 +301,7 @@ export default function HomeExt(props) {
                 </g>
               </svg>
             </div>
-            <div className="relative z-50 mt-40 flex flex-col items-end justify-center w-full">
+            <div className="relative z-40 mt-40 flex flex-col items-end justify-center w-full">
               <div className="container relative left-0 max-w-4xl lg:absolute xl:max-w-xl lg:w-screen">
                 <div className="max-w-[800px] py-4 px-4 relative group">
                   <div className="w-[100%] h-full overflow-hidden rounded-2xl items-center justify-center duration-500">
