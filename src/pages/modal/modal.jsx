@@ -1,6 +1,24 @@
+import { useState } from "react";
+
 export const Modal = (props) => {
-  console.log(props.modalIsOpen);
   // var setModalIsOpen = props.setModalIsOpen;
+  const [formData, setFormData] = useState({
+    FirstName: '',
+    LastName: '',
+    Email: ''
+  })
+
+  const handleSubmit = () => {
+    if(!formData.Email || !formData.FirstName || !formData.LastName)
+    {
+      alert("Please enter all the details before submitting !");
+    }
+    else
+    {
+      console.log(formData);
+    }
+  }
+
   return (
     <dh-component>
       <div
@@ -35,15 +53,28 @@ export const Modal = (props) => {
               Enter Your Details
             </h1>
             <label
-              htmlFor="name"
+              htmlFor="first-name"
               className="text-gray-800 text-sm font-bold leading-tight tracking-normal"
             >
-              Owner Name
+              First Name
             </label>
             <input
               id="name"
               className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
               placeholder="James"
+              onChange={(e) => setFormData({...formData, FirstName: e.target.value})}
+            />
+            <label
+              htmlFor="last-name"
+              className="text-gray-800 text-sm font-bold leading-tight tracking-normal"
+            >
+              Last Name
+            </label>
+            <input
+              id="name"
+              className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+              placeholder="James"
+              onChange={(e) => setFormData({...formData, LastName: e.target.value})}
             />
             <label
               htmlFor="email2"
@@ -76,10 +107,11 @@ export const Modal = (props) => {
                 id="email2"
                 className="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-16 text-sm border-gray-300 rounded border"
                 placeholder="xxxx@yy.zz"
+                onChange={(e) => setFormData({...formData, Email: e.target.value})}
               />
             </div>
             <div className="flex items-center justify-start w-full">
-              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">
+              <button onClick={handleSubmit} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">
                 Submit
               </button>
               <button
